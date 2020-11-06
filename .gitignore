@@ -1,0 +1,9 @@
+# WebDir
+/app
+/runtime
+/WebDir.*
+/_plugins/*.jar
+
+# Maven
+/.idea/
+*.iml
