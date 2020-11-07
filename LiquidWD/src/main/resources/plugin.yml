@@ -1,0 +1,6 @@
+main: com.katsute.websys.liquid.Main
+name: LiquidWD
+version: 1.0.0
+api-version: 1.0.0
+authors:
+  - Katsute

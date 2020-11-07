@@ -2,7 +2,8 @@
 /app
 /runtime
 /WebDir.*
-/_plugins/*.jar
+/*.bat
+/*.jar
 
 # Maven
 /.idea/
