@@ -9,6 +9,8 @@
 /*.log.*
 /*.lck.*
 
+/_site
+
 # Maven
 /.idea/
 *.iml
