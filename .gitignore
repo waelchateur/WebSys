@@ -4,7 +4,12 @@
 /WebDir.*
 /*.bat
 /*.jar
+/*.log
+/*.lck
+/*.log.*
+/*.lck.*
 
 # Maven
 /.idea/
 *.iml
+target

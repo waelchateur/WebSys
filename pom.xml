@@ -43,7 +43,7 @@
                         <descriptorRef>jar-with-dependencies</descriptorRef>
                     </descriptorRefs>
                     <appendAssemblyId>false</appendAssemblyId>
-                    <outputDirectory>_plugins</outputDirectory>
+                    <outputDirectory>../_plugins</outputDirectory>
                 </configuration>
                 <executions>
                     <execution>

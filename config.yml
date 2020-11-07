@@ -1,0 +1,50 @@
+############################################################
+# +------------------------------------------------------+ #
+# |                 WebDir Configuration                 | #
+# +------------------------------------------------------+ #
+############################################################
+
+# Safe mode disables plugin loading.
+# Default: false
+safe: false
+
+# The Language that the application will use for logging.
+# Default: en_US
+lang: en_US
+
+# The folder where plugins will be loaded from.
+# Default: _plugins
+plugins: _plugins
+
+# The folder where files will be loaded from.
+# Default: _root
+sources: _root
+
+# The folder where defaults will be loaded from.
+# Default: _default
+default: _default
+
+# The folder where file renders will be saved.
+# Default: _site
+output: _site
+
+# Whether to clear the output directory before rendering files.
+# Default: true
+clean: true
+
+# Whether to run a server or not.
+# Default: false
+server: false
+
+# The port to run the server at.
+# Default: 80
+port: 80
+
+# The context to view files at.
+# Ex: setting this to 'files' would put files from C://* at http://localhost/files/C:/*
+# Default: files
+context: files
+
+# The file to load permissions from (server only).
+# Default: permissions.yml
+permissions: permissions.yml
