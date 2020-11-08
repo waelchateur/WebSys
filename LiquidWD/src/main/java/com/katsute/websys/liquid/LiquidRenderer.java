@@ -29,7 +29,7 @@ public final class LiquidRenderer extends Renderer {
     @SuppressWarnings("CollectionAddAllCanBeReplacedWithConstructor")
     @Override
     public byte[] render(final FileRender render){
-        final Template template = Template.parse(render.getContentAsString(), parse);
+        final Template template = Template.parse(Objects.requireNonNullElse(render.getContentAsString(), ""), parse);
 
         final Map<String,? super Object> map = new HashMap<>();
         // apply global set

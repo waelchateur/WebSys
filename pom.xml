@@ -8,6 +8,7 @@
     <modules>
         <module>LiquidWD</module>
         <module>SassWD</module>
+        <module>FileVars</module>
     </modules>
 
     <properties>

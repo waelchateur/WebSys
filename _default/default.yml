@@ -1,9 +1,0 @@
-default:
-  index: 1
-  scope:
-    - '*'
-    - '!*.*'
-renderers:
-  - layout
-  - liquid
-layout: default

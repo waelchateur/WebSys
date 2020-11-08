@@ -7,7 +7,6 @@ import java.io.File;
 
 public final class Main extends WebDirPlugin {
 
-    private LayoutRenderer layouts;
     private LiquidRenderer liquid;
 
     public Main(final PluginService service){
@@ -16,7 +15,7 @@ public final class Main extends WebDirPlugin {
 
     @Override
     public final void onEnable(){
-        addRenderer("layout", layouts = new LayoutRenderer(new File("_layouts")));
+        addRenderer("layout", new LayoutRenderer(new File("_layouts")));
         addRenderer("liquid", liquid = new LiquidRenderer(new File("_includes")));
     }
 

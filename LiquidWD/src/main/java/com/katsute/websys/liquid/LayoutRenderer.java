@@ -3,10 +3,9 @@ package com.katsute.websys.liquid;
 import com.kttdevelopment.webdir.api.FileRender;
 import com.kttdevelopment.webdir.api.Renderer;
 
-import java.io.File;
-import java.io.IOException;
+import java.io.*;
 import java.nio.file.Files;
-import java.util.Objects;
+import java.util.*;
 
 public final class LayoutRenderer extends Renderer {
 
@@ -21,14 +20,24 @@ public final class LayoutRenderer extends Renderer {
 
     @Override
     public final byte[] render(final FileRender render){
-        final String layout    = Objects.requireNonNull(render.getFrontMatter().get("layout").toString());
-        final String layoutExt = layout.toLowerCase().endsWith(".html") ? layout.substring(0, layout.length()-len) : layout;
-        final String target    = layoutExt.isBlank() || layoutExt.equalsIgnoreCase(".html") ? layout : layoutExt;
+        final Object obj = render.getFrontMatter().get("layouts");
+        @SuppressWarnings("unchecked")
+        final List<String> layouts = obj instanceof List ? (List<String>) obj : List.of(obj.toString());
 
+        String content = Objects.requireNonNullElse(render.getContentAsString(), "");
+        Collections.reverse(layouts);
+        for(final String layout : layouts)
+            content = applyLayout(layout, content);
+        return asBytes(content);
+    }
+
+    private String applyLayout(final String layout, final String content){
+        final String fileName = layout.toLowerCase().endsWith(".html") ? layout.substring(0, layout.length()-len) : layout;
+        final String target    = fileName.isBlank() || fileName.equalsIgnoreCase(".html") ? layout : fileName + ".html";
         try{
-            return asBytes(Files.readString(new File(layouts, target).toPath()).replaceAll(regex, render.getContentAsString()));
-        }catch(IOException e){
-            return super.render(render);
+            return Files.readString(new File(layouts, target).toPath()).replaceAll(regex, content);
+        }catch(final IOException e){
+            throw new UncheckedIOException(e);
         }
     }
 

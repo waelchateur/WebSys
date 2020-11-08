@@ -1,0 +1,12 @@
+default:
+  index: 1
+  scope:
+    - 'C:/*'
+    - '!*.*'
+exchange_renderers:
+  - fileVars
+  - layout
+  - liquid
+layouts:
+  - default
+  - folder
