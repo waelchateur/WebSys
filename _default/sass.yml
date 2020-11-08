@@ -1,0 +1,6 @@
+default:
+  index: 1
+  scope:
+    - '*.scss'
+renderers:
+  - sass

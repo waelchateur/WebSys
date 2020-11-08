@@ -34,7 +34,7 @@ clean: true
 
 # Whether to run a server or not.
 # Default: false
-server: false
+server: true
 
 # The port to run the server at.
 # Default: 80
