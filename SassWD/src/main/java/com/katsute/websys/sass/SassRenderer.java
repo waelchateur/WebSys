@@ -6,8 +6,7 @@ import io.bit3.jsass.*;
 import io.bit3.jsass.Compiler;
 import org.apache.commons.io.FilenameUtils;
 
-import java.io.File;
-import java.io.IOException;
+import java.io.*;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.*;
 
@@ -29,16 +28,19 @@ public final class SassRenderer extends Renderer {
                 final Path map = Paths.get(abs, name + ".css.map");
 
                 final Options options = new Options();
-                // options.setSourceMapFile(Paths.get(render.getInputFile().getAbsoluteFile().getParentFile().getAbsolutePath(), name + ".css.map").toUri());
+                // map doesn't render without this for some reason
+                options.setSourceMapFile(Paths.get(render.getInputFile().getAbsoluteFile().getParentFile().getAbsolutePath(), name + ".css.map").toUri());
 
                 final Output out = compiler.compileString(content, input.toURI(), input.toURI(), options);
 
                 Files.write(css, out.getCss().getBytes(StandardCharsets.UTF_8));
                 Files.write(map,out.getSourceMap().getBytes(StandardCharsets.UTF_8));
-            }catch(final CompilationException | IOException ignored){ }
+            }catch(final CompilationException | IOException e){
+                throw new RuntimeException(e);
+            }
         else if(name.startsWith("_"))
             render.setOutputFile(null);
-
+        render.setOutputFile(null);
         return super.render(render);
     }
 

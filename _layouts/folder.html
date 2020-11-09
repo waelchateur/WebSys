@@ -12,9 +12,56 @@
                 <a class="nav-link py-1" data-toggle="tab" href="#view">View</a>
             </li>
         </ul>
-        <div class="tab-content">
+        <div class="tab-content py-2 border-bottom">
             <!-- home -->
-            <div class="tab-pane fade show active" id="home"></div>
+            <div class="tab-pane fade show active" id="home">
+                <div class="d-flex">
+                    <!-- clipboard -->
+                        {% capture category-content %}
+                                {% assign button-name = 'Pin to Quick access' %}
+                                {% assign button-icon = 'fas fa-thumbtack' %}
+                            {% include toolbar/button_lg.liquid %}
+                                {% assign button-name = 'Copy' %}
+                                {% assign button-icon = 'fas fa-copy' %}
+                            {% include toolbar/button_lg.liquid %}
+                                {% assign button-name = 'Paste' %}
+                                {% assign button-icon = 'fas fa-paste' %}
+                            {% include toolbar/button_lg.liquid %}
+                                {% capture group-content %}
+                                        {% assign button-name = 'Cut' %}
+                                        {% assign button-icon = 'fas fa-cut' %}
+                                    {% include toolbar/button_sm.liquid %}   
+                                        {% assign button-name = 'Copy path' %}
+                                        {% assign button-icon = 'fas fa-link' %}
+                                    {% include toolbar/button_sm.liquid %}
+                                        {% assign button-name = 'Paste shortcut' %}
+                                        {% assign button-icon = 'fas fa-external-link-square-alt' %}
+                                    {% include toolbar/button_sm.liquid %} 
+                                {% endcapture %}
+                                {% include toolbar/button_group.liquid %}
+                        {% endcapture %}
+                        {% assign category-name = 'Clipboard' %}
+                    {% include toolbar/category.liquid %}
+                    <!-- organize -->
+                        {% capture category-content %}
+                                {% assign button-name = 'Move to' %}
+                                {% assign button-icon = 'fas fa-file-import' %}
+                            {% include toolbar/button_lg.liquid %}
+                                {% assign button-name = 'Copy to' %}
+                                {% assign button-icon = 'fas fa-copy' %}
+                            {% include toolbar/button_lg.liquid %}
+                                {% assign button-name = 'Delete' %}
+                                {% assign button-icon = 'fas fa-times' %}
+                            {% include toolbar/button_lg.liquid %}
+                                {% assign button-name = 'Rename' %}
+                                {% assign button-icon = 'fas fa-i-cursor' %}
+                            {% include toolbar/button_lg.liquid %}
+                        {% endcapture %}
+                        {% assign category-name = 'Organize' %}
+                    {% include toolbar/category.liquid %}
+                    <!-- new -->
+                </div>
+            </div>
             <!-- share -->
             <div class="tab-pane fade" id="share">S</div>
             <!-- view -->
@@ -22,4 +69,17 @@
         </div>
     </div>
 </div>
-<!-- files -->
+<div class="col-12 row mx-0 my-2">
+    <!-- sidebar -->
+    <div class="col-3 p-0">
+        <div class="border rounded ml-2 mr-1 p-2">
+
+        </div>
+    </div>
+    <!-- files -->
+    <div class="col-9 p-0">
+        <div class="border rounded ml-1 mr-2 p-2">
+
+        </div>
+    </div>
+</div>

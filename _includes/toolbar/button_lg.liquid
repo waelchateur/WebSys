@@ -1,0 +1,13 @@
+<div class="d-inline-block mr-1 d-flex" style="max-width: 100px;">
+    <button 
+        id="{{ button-name | replace:' ', '-' | downcase }}" 
+        class="btn btn-light py-1 px-2"
+    >
+        <div class="col-12 p-0">
+            <i class="{{ button-icon }} fa-fw fa-lg"></i>
+        </div>
+        <div class="col-12 p-0">
+            <small>{{ button-name }}</small>
+        </div>
+    </button>
+</div>
