@@ -1,85 +1,31 @@
-<!-- toolbar -->
-<div class="col-12">
-    <div class="border rounded m-2 p-2">
-        <ul class="nav nav-tabs" id="toolbar">
-            <li class="nav-item">
-                <a class="nav-link py-1 active" data-toggle="tab" href="#home">Home</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link py-1" data-toggle="tab" href="#share">Share</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link py-1" data-toggle="tab" href="#view">View</a>
-            </li>
-        </ul>
-        <div class="tab-content py-2 border-bottom">
-            <!-- home -->
-            <div class="tab-pane fade show active" id="home">
-                <div class="d-flex">
-                    <!-- clipboard -->
-                        {% capture category-content %}
-                                {% assign button-name = 'Pin to Quick access' %}
-                                {% assign button-icon = 'fas fa-thumbtack' %}
-                            {% include toolbar/button_lg.liquid %}
-                                {% assign button-name = 'Copy' %}
-                                {% assign button-icon = 'fas fa-copy' %}
-                            {% include toolbar/button_lg.liquid %}
-                                {% assign button-name = 'Paste' %}
-                                {% assign button-icon = 'fas fa-paste' %}
-                            {% include toolbar/button_lg.liquid %}
-                                {% capture group-content %}
-                                        {% assign button-name = 'Cut' %}
-                                        {% assign button-icon = 'fas fa-cut' %}
-                                    {% include toolbar/button_sm.liquid %}   
-                                        {% assign button-name = 'Copy path' %}
-                                        {% assign button-icon = 'fas fa-link' %}
-                                    {% include toolbar/button_sm.liquid %}
-                                        {% assign button-name = 'Paste shortcut' %}
-                                        {% assign button-icon = 'fas fa-external-link-square-alt' %}
-                                    {% include toolbar/button_sm.liquid %} 
-                                {% endcapture %}
-                                {% include toolbar/button_group.liquid %}
-                        {% endcapture %}
-                        {% assign category-name = 'Clipboard' %}
-                    {% include toolbar/category.liquid %}
-                    <!-- organize -->
-                        {% capture category-content %}
-                                {% assign button-name = 'Move to' %}
-                                {% assign button-icon = 'fas fa-file-import' %}
-                            {% include toolbar/button_lg.liquid %}
-                                {% assign button-name = 'Copy to' %}
-                                {% assign button-icon = 'fas fa-copy' %}
-                            {% include toolbar/button_lg.liquid %}
-                                {% assign button-name = 'Delete' %}
-                                {% assign button-icon = 'fas fa-times' %}
-                            {% include toolbar/button_lg.liquid %}
-                                {% assign button-name = 'Rename' %}
-                                {% assign button-icon = 'fas fa-i-cursor' %}
-                            {% include toolbar/button_lg.liquid %}
-                        {% endcapture %}
-                        {% assign category-name = 'Organize' %}
-                    {% include toolbar/category.liquid %}
-                    <!-- new -->
+<!-- navigation -->
+<nav class="navbar navbar-expand-md navbar-dark bg-dark p-0">
+    <!-- brand -->
+    <button 
+        class="navbar-toggler border-0 mr-0 p-0 d-flex align-items-center justify-content-center"
+        data-toggle="collapse" data-target="#nav-sidebar">
+        <img src="/dependencies/katsute/assets/icon.png" width="30" height="30">
+    </button>
+    <p class="navbar-brand user-select-none my-0 pl-2 mr-auto">WebSys</p>
+    <!-- search -->
+    <button class="navbar-toggler border-0" data-toggle="collapse" data-target="#nav-dropdown">
+        <i class="fas fa-bars"></i>
+    </button>
+    <div class="collapse navbar-collapse px-1 py-2" id="nav-dropdown">
+        <form class="form-inline mr-auto">
+            <div class="input-group input-group-sm">
+                <input class="form-control rounded-0" type="text" placeholder="Search">
+                <div class="input-group-append">
+                    <button class="btn btn-primary rounded-0"><i class="fas fa-search"></i></button>
                 </div>
             </div>
-            <!-- share -->
-            <div class="tab-pane fade" id="share">S</div>
-            <!-- view -->
-            <div class="tab-pane fade" id="view">H</div>
-        </div>
+        </form>
     </div>
-</div>
-<div class="col-12 row mx-0 my-2">
-    <!-- sidebar -->
-    <div class="col-3 p-0">
-        <div class="border rounded ml-2 mr-1 p-2">
+</nav>
 
-        </div>
-    </div>
-    <!-- files -->
-    <div class="col-9 p-0">
-        <div class="border rounded ml-1 mr-2 p-2">
+<!-- sidebar -->
+<div id="nav-sidebar" class="h-100 bg-dark collapse navbar-collapse show">
 
-        </div>
-    </div>
 </div>
+
+<!-- files -->

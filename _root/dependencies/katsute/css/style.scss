@@ -8,10 +8,63 @@
     src: url("/dependencies/google/webfonts/FiraCode.ttf")
 }
 
+$color-dark     : #202020;
+$color-darker   : #151515;
+$color-darkest  : #101010;
+
+// global
+
 * {
     font-family: 'Lexend Deca', Arial, Helvetica, sans-serif;
+    outline: none !important;
 }
 
 code, pre{
     font-family: 'Fira Code', 'Courier New', Courier, monospace;
+}
+
+// navs
+
+$transition: all .15s ease-in-out;
+$sidebar-width: 200px;
+
+.bg-dark{
+    background-color: $color-dark !important;
+}
+
+nav{
+    $size: 48px;
+
+    min-height: $size;
+
+    button.navbar-toggler{
+        transition: $transition;
+        width : $size;
+        height: $size;
+
+        &:hover{
+            cursor: pointer;
+            background-color: $color-darker;
+        }
+    }
+
+    p.navbar-brand{
+        width: $sidebar-width - $size;
+    }
+
+    div form div.input-group{
+        input{
+            background-clip: unset;
+            width: 300px !important;
+        }
+    }
+}
+
+#nav-sidebar{
+    width       : $sidebar-width;
+    transition  : $transition;
+    &.collapse:not(.show){
+        display: unset;
+        margin-left: -$sidebar-width;
+    }
 }
