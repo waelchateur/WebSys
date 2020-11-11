@@ -1,0 +1,6 @@
+main: com.katsute.websys.vars.Main
+name: WebSysVars
+version: 1.0.0
+api-version: 1.0.0
+authors:
+  - Katsute

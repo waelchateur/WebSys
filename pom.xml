@@ -9,6 +9,8 @@
         <module>LiquidWD</module>
         <module>SassWD</module>
         <module>FileVars</module>
+        <module>URLRedirect</module>
+        <module>WebSysVars</module>
     </modules>
 
     <properties>

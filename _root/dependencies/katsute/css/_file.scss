@@ -1,0 +1,16 @@
+$transition: all .15s ease-in-out;
+
+.file{
+    height: 100px;
+    width: 100px;
+    transition: $transition;
+
+    &:hover{
+        transform: translateY(-5px);
+    }
+
+    a{
+        background-color: rgba(0, 0, 0, 0.6);
+    }
+
+}

@@ -1,31 +1,45 @@
-<!-- navigation -->
-<nav class="navbar navbar-expand-md navbar-dark bg-dark p-0">
-    <!-- brand -->
-    <button 
-        class="navbar-toggler border-0 mr-0 p-0 d-flex align-items-center justify-content-center"
-        data-toggle="collapse" data-target="#nav-sidebar">
-        <img src="/dependencies/katsute/assets/icon.png" width="30" height="30">
-    </button>
-    <p class="navbar-brand user-select-none my-0 pl-2 mr-auto">WebSys</p>
-    <!-- search -->
-    <button class="navbar-toggler border-0" data-toggle="collapse" data-target="#nav-dropdown">
-        <i class="fas fa-bars"></i>
-    </button>
-    <div class="collapse navbar-collapse px-1 py-2" id="nav-dropdown">
-        <form class="form-inline mr-auto">
-            <div class="input-group input-group-sm">
-                <input class="form-control rounded-0" type="text" placeholder="Search">
-                <div class="input-group-append">
-                    <button class="btn btn-primary rounded-0"><i class="fas fa-search"></i></button>
-                </div>
+<div class="w-100 h-100 d-flex flex-column bg-light">
+    <!-- navigation -->
+    <nav class="navbar navbar-expand-md navbar-dark bg-dark p-0 w-100">
+        <!-- brand -->
+        <button 
+            id="sidebar-toggler"
+            class="navbar-toggler border-0 mr-0 p-0 d-flex align-items-center justify-content-center"
+        >
+            <img src="/dependencies/katsute/assets/icon.png" width="30" height="30">
+        </button>
+        <p class="navbar-brand user-select-none my-0 pl-2 mr-auto">WebSys</p>
+        <!-- search -->
+        <button class="navbar-toggler border-0" data-toggle="collapse" data-target="#nav-dropdown">
+            <i class="fas fa-bars"></i>
+        </button>
+        <div class="collapse navbar-collapse" id="nav-dropdown">
+            <div class="px-1 py-2">
+                <form class="form-inline mr-auto">
+                    <div class="input-group input-group-sm">
+                        <input class="form-control rounded-0" type="text" placeholder="Search">
+                        <div class="input-group-append">
+                            <button class="btn btn-primary rounded-0"><i class="fas fa-search"></i></button>
+                        </div>
+                    </div>
+                </form>
             </div>
-        </form>
+        </div>
+    </nav>
+
+    <div class="d-flex flex-fill overflow-auto">
+    <!-- sidebar -->
+        <div id="nav-sidebar" class="bg-dark text-white active">
+
+        </div>
+    <!-- files -->
+        <div class="flex-fill overflow-auto">
+            <div class="m-2">
+                {% assign head = exchange.uri.uri %}
+                {% for file in file.files %}
+                    {% include files/icon.liquid %}
+                {% endfor %}
+            </div>
+        </div>
     </div>
-</nav>
-
-<!-- sidebar -->
-<div id="nav-sidebar" class="h-100 bg-dark collapse navbar-collapse show">
-
 </div>
-
-<!-- files -->

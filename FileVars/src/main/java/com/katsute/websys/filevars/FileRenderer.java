@@ -3,9 +3,14 @@ package com.katsute.websys.filevars;
 import com.kttdevelopment.webdir.api.FileRender;
 import com.kttdevelopment.webdir.api.Renderer;
 
-import java.io.File;
-import java.io.IOException;
+import javax.imageio.ImageIO;
+import javax.swing.*;
+import javax.swing.filechooser.FileSystemView;
+import java.awt.*;
+import java.awt.image.BufferedImage;
+import java.io.*;
 import java.util.*;
+import java.util.List;
 
 public class FileRenderer extends Renderer {
 
@@ -13,7 +18,7 @@ public class FileRenderer extends Renderer {
     public byte[] render(final FileRender render){
         final File IN = render.getInputFile();
 
-        final Map<String, ? super Object> map = new HashMap<>(fileAsMap(IN));
+        final Map<String,? super Object> map = new HashMap<>(fileAsMap(IN));
         if(IN.isDirectory()){
             final List<Map<String,? super Object>> files = new ArrayList<>();
             for(final File listFile : Objects.requireNonNullElse(IN.listFiles(), new File[0]))
@@ -41,6 +46,9 @@ public class FileRenderer extends Renderer {
         map.put("canExecute", file.canExecute());
         map.put("lastModified", file.lastModified());
         map.put("size", file.length());
+        try{
+            map.put("parent", file.getParentFile().getName());
+        }catch(final NullPointerException ignored){ }
 
         return map;
     }

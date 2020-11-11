@@ -4,6 +4,7 @@ default:
     - 'C:/*'
     - '!*.*'
 exchange_renderers:
+  - WebSysVars
   - fileVars
   - layout
   - liquid
