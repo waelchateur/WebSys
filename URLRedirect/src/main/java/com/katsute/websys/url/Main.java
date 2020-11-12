@@ -14,7 +14,7 @@ public final class Main extends WebDirPlugin {
     @Override
     public void onEnable(){
         addRenderer("url", new Renderer(){
-            final Pattern regex = Pattern.compile("^\\Q[InternetShortcut]\\E\\n\\r?\\QURL=\\E(.+)$");
+            final Pattern regex = Pattern.compile("^\\Q[InternetShortcut]\\E\\r?\\n\\QURL=\\E(.+)$");
 
             @Override
             public byte[] render(final FileRender render){
