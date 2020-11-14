@@ -1,5 +1,5 @@
 <div class="card bg-transparent file d-inline-block m-1"
-    data-toggle="tooltip" data-placement="bottom" title="{{ file.name }}">
+    title="{{ file.name }}">
     <div class="card-img w-100 h-100 
         d-flex align-items-center justify-content-center">
         {% if file.dir %}
@@ -27,7 +27,8 @@
             class="text-decoration-none text-white text-truncate 
             small stretched-link card-text file-link
             p-1 w-100" 
-            href="{{ file.name | url_encode }}/">
+            href="{{ file.name | url_encode | escape }}/"
+            file-target="{{ file.path }}" file-dir="{{ file.dir }}">
             {{ file.name }}
         </a>
     </div>

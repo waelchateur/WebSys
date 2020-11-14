@@ -33,7 +33,7 @@
 
         </div>
     <!-- files -->
-        <div class="flex-fill overflow-auto">
+        <div id="files" class="flex-fill overflow-auto" file-target="{{ file.path }}" file-dir="{{ file.dir }}">
             <div class="m-2">
                 {% assign files = file.files | sort_natural: "name" %}
                 {% for file in files %}
@@ -49,4 +49,6 @@
             </div>
         </div>
     </div>
+    <!-- dropdown -->
+    {% include files/context_menu.liquid %}
 </div>

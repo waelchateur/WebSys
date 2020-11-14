@@ -1,0 +1,12 @@
+<div id="context-menu" class="dropdown-menu rounded-0 shadow-lg">
+    {% for option in context_menu %}
+        {% if option %}
+            {% capture dir %}{% if option.dir %} file-dir="{{ option.dir }}"{% endif %}{% endcapture %}
+            <!-- dropdown button -->
+            <button class="dropdown-item"{{ dir }}>{{ option.name }}</button>
+        {% else %}
+            <!-- dropdown divider -->
+            <div class="dropdown-divider"></div>
+        {% endif %}
+    {% endfor %}
+</div>

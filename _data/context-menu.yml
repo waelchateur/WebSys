@@ -1,0 +1,29 @@
+context_menu:
+  - 
+    name: Open
+  - name: Open file location
+  - name: Edit
+    dir: false
+  - name: Print
+    dir: false
+
+  - name: New folder
+    dir: true
+  - name: New file
+    dir: true
+
+  - null
+
+  - name: Cut
+  - name: Copy
+  - name: Paste
+
+  - null
+
+  - name: Create shortcut
+  - name: Delete
+  - name: Rename
+
+  - null
+
+  - name: Properties

@@ -12,3 +12,5 @@ exchange_renderers:
 layouts:
   - default
   - folder
+import:
+  - _data/context-menu.yml
