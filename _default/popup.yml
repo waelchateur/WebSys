@@ -1,0 +1,9 @@
+default:
+  index: 1
+  scope:
+    - '/popup'
+exchange_renderers:
+  - WebSysVars
+  - fileVars
+  - layout
+  - liquid

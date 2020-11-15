@@ -1,0 +1,30 @@
+<!-- 
+    File list (for folders)
+-->
+{% if file.dir %}
+    {% assign type = "dir" %}
+{% else %}
+    {% assign type = "file" %}
+{% endif %}
+
+<div class="row border-bottom file mx-2 py-2 position-relative w-100"
+    title="{{ file.name }}">
+    <div class="d-flex align-items-center col">
+        <!-- icon -->
+        {% if file.dir %}
+            <i class="fas fa-folder fa-lg fa-fw"></i>
+        {% else %}
+            <i class="fas fa-file fa-lg fa-fw"></i>
+        {% endif %}
+        <!-- name -->
+        <a 
+            class="text-decoration-none text-body text-truncate 
+                h6 stretched-link card-text file-link
+                ml-3 w-100" 
+            href="{{ file.name | url_encode | escape }}"
+            file-target="{{ file.path }}" file-type="{{ type }}"
+            >
+            {{ file.name }}
+        </a>
+    </div>
+</div>

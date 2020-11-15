@@ -1,0 +1,48 @@
+<!--
+    Folder files list/grid
+-->
+{% if exchange.cookies.file-grid == "true" %}
+    {% assign grid = true %}
+{% else %}
+    {% assign grid = false %}
+{% endif %}
+
+<div 
+    id="files" 
+    class="flex-fill overflow-auto p-2" 
+    file-target="{{ file.path }}" file-type="parent"
+    >
+    <!-- topbar -->
+    <div class="d-flex align-items-center border-bottom mx-0 mb-1 py-1">
+        <!-- folder name -->
+        <p class="d-inline-block mb-0">/{{ file.name }}</p>
+        <!-- grid toggler -->
+        <button id="toggle-view" class="btn btn-light ml-auto">
+            {% if grid %}
+                <i class="fas fa-border-all fa-sq"></i>
+            {% else %}
+                <i class="fas fa-th-list fa-sq"></i>
+            {% endif %}
+        </button>
+    </div>
+    
+    {% assign files = file.files | sort_natural: "name" %}
+    {% if grid %} {% comment %} Show button for alt {% endcomment %}
+        {% assign template = "files/file-list.liquid" %}
+    {% else %}
+        {% assign template = "files/file-grid.liquid" %}
+    {% endif %}
+
+    <!-- directories -->
+    {% for file in files %}
+        {% if file.dir %}
+            {% include {{ template }} %}
+        {% endif %}
+    {% endfor %}
+    <!-- files -->
+    {% for file in files %}
+        {% if file.dir == false %}
+            {% include {{ template }} %}
+        {% endif %}
+    {% endfor %}
+</div>

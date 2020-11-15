@@ -1,29 +1,50 @@
+# 
+# Right click file/folder menu
+#
+# @param name       The list name
+# @param requires   What type of file required to be enabled [file, dir, parent]
+# 
+# null signifies line break
+#
 context_menu:
   - 
     name: Open
+    action: open
   - name: Open file location
+    action: openfl
   - name: Edit
-    dir: false
+    action: edit
+    requires: file
   - name: Print
-    dir: false
+    action: print
+    requires: file
 
   - name: New folder
-    dir: true
+    action: newfolder
+    requires: parent
   - name: New file
-    dir: true
+    action: newfile
+    requires: parent
 
   - null
 
   - name: Cut
+    action: cut
   - name: Copy
+    action: copy
   - name: Paste
+    action: paste
 
   - null
 
   - name: Create shortcut
+    action: newsct
   - name: Delete
+    action: delete
   - name: Rename
+    action: rename
 
   - null
 
   - name: Properties
+    action: properties

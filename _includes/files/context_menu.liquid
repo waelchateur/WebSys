@@ -1,9 +1,12 @@
+<!--
+    Right click file/folder menu. Uses options from context-menu.yml
+-->
 <div id="context-menu" class="dropdown-menu rounded-0 shadow-lg">
     {% for option in context_menu %}
         {% if option %}
-            {% capture dir %}{% if option.dir %} file-dir="{{ option.dir }}"{% endif %}{% endcapture %}
+            {% capture requires %}{% if option.requires %} file-requires="{{ option.requires }}"{% endif %}{% endcapture %}
             <!-- dropdown button -->
-            <button class="dropdown-item"{{ dir }}>{{ option.name }}</button>
+            <button class="dropdown-item context-item"{{ requires }} action="{{ option.action }}">{{ option.name }}</button>
         {% else %}
             <!-- dropdown divider -->
             <div class="dropdown-divider"></div>

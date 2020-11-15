@@ -1,20 +1,20 @@
-$transition: all .15s ease-in-out;
-
 .file{
-    height: 100px;
-    width: 100px;
-    transition: $transition;
+    &:not(.row){
+        transition  : all .15s ease-in-out;
+        
+        height  : 100px;
+        width   : 100px;
 
-    &:hover{
-        transform: translateY(-5px);
+        &:hover{
+            transform: translateY(-5px);
+        }
+
+        a.stretched-link{
+            background-color: rgba(0, 0, 0, 0.6);
+        }
     }
-
-    a.stretched-link{
-        background-color: rgba(0, 0, 0, 0.6);
-    }
-
 }
 
 #context-menu{
-    z-index: 2000;
+    z-index   : 2000; // kttp above tooltips
 }

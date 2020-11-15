@@ -29,25 +29,9 @@
 
     <div class="d-flex flex-fill overflow-auto">
     <!-- sidebar -->
-        <div id="nav-sidebar" class="bg-dark text-white active">
-
-        </div>
+        {% include files/sidebar.liquid %}
     <!-- files -->
-        <div id="files" class="flex-fill overflow-auto" file-target="{{ file.path }}" file-dir="{{ file.dir }}">
-            <div class="m-2">
-                {% assign files = file.files | sort_natural: "name" %}
-                {% for file in files %}
-                    {% if file.dir %}
-                        {% include files/icon.liquid %}
-                    {% endif %}
-                {% endfor %}
-                {% for file in files %}
-                    {% if file.dir == false %}
-                        {% include files/icon.liquid %}
-                    {% endif %}
-                {% endfor %}
-            </div>
-        </div>
+        {% include files/files.liquid %}
     </div>
     <!-- dropdown -->
     {% include files/context_menu.liquid %}
