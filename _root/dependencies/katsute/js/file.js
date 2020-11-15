@@ -1,6 +1,11 @@
 $(document).ready(function () {
+    // search
+    $("#file-search").focus(showSearch);
+    $("#reset-filter").click(clearSearch);
+
     // navigation
-    $("#toggle-view").click(toggle);
+    $("#toggle-view").click(toggleView);
+
     // files
     $('.file-link').click(function() {
         return false;
@@ -14,6 +19,7 @@ $(document).ready(function () {
         return false;
     });
 
+    // menu
     $(".file-link").contextmenu(showMenu);
     $("#files").contextmenu(showMenu);
 
@@ -24,8 +30,34 @@ $(document).ready(function () {
     $(window).blur(hideMenu);
     $(window).resize(hideMenu);
 
-    $(".context-item").click(context);
+    $(".context-item").click(hideMenu);
+
+    // init
+    $("#file-search").removeAttr("disabled");
 });
+
+const filter = $("#file-filter");
+
+// toggle adv filter
+function showSearch(e){
+    filter.addClass("d-block");
+}
+
+function hideSearch(e){
+    if(e.target.id == "file-search" || e.target.id == filter[0].id || $(e.target).parents('#' + filter[0].id).length)
+        return;
+    filter.removeClass("d-block");
+}
+
+function clearSearch(e){
+    $(filter).parent().find("input").attr("value", "");
+}
+
+// toggle file grid/list view
+function toggleView(e){
+    setCookie("file-grid", getCookie("file-grid") == "true" ? "false" : "true", 0);
+    location.reload();
+}
 
 var selected;
 
@@ -33,6 +65,8 @@ const menu   = $("#context-menu");
 
 // toggle menu
 function showMenu(e){
+    hideSearch(e);
+
     const y      = e.pageY;
     const x      = e.pageX;
     const width  = menu.width();
@@ -58,12 +92,15 @@ function showMenu(e){
     menu.css({
         top: top,
         left: left
-    }).addClass("d-block");
+    });
+
+    menu.addClass("show");
     return false;
 }
 
 function hideMenu(e){
-    menu.removeClass("d-block");
+    hideSearch(e);
+    menu.removeClass("show");
 }
 
 // handle menu click
@@ -76,10 +113,4 @@ function context(e){
         case "properties":
             open(popuplink, selected, params)
     }
-}
-
-// toggle file grid/list view
-function toggle(e){
-    setCookie("file-grid", getCookie("file-grid") == "true" ? "false" : "true", 0);
-    location.reload();
 }

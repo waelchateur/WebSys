@@ -1,49 +1,17 @@
-<!-- 
-    File icon (for folders)
--->
-{% if file.dir %}
-    {% assign type = "dir" %}
-{% else %}
-    {% assign type = "file" %}
-{% endif %}
+{% comment %}
+File grid (for folders)
+{% endcomment %}
+{% assign template = "files/file-grid-single.liquid" %}
 
-<div class="card bg-transparent file d-inline-block m-1"
-    title="{{ file.name }}">
-    <!-- icon -->
-    <div class="card-img w-100 h-100 
-        d-flex align-items-center justify-content-center">
-        {% if file.dir %}
-            <i class="fas fa-folder fa-3x fa-fw"></i>
-        {% else %}
-            <i class="fas fa-file fa-3x fa-fw"></i>
-        {% endif %}
-    </div>
-    <!-- overlay -->
-    <div class="card-img-overlay p-0 w-100 
-        text-center d-flex align-items-start flex-column">
-        <!-- top left icons -->
-        <div class="d-inline-block align-self-start mb-auto p-1">
-            {% if file.canWrite == false %}
-                <span class="fa-stack fa-fw fa-sm">
-                    <i class="fas fa-pencil-alt fa-stack-1x"></i>
-                    <i class="text-danger fas fa-ban fa-stack-2x"></i>
-                </span>
-            {% endif %}
-            {% if file.hidden %}
-                <span class="fa-stack fa-fw fa-sm">
-                    <i class="fas fa-eye-slash fa-stack-1x"></i>
-                </span>
-            {% endif %}
-        </div>
-        <!-- file name -->
-        <a 
-            class="text-decoration-none text-white text-truncate 
-                small stretched-link card-text file-link
-                p-1 w-100" 
-            href="{{ file.name | url_encode | escape }}"
-            file-target="{{ file.path }}" file-type="{{ type }}"
-            >
-            {{ file.name }}
-        </a>
-    </div>
-</div>
+<!-- directories -->
+{% for file in files %}
+    {% if file.dir %}
+        {% include {{ template }} %}
+    {% endif %}
+{% endfor %}
+<!-- files -->
+{% for file in files %}
+    {% if file.dir == false %}
+        {% include {{ template }} %}
+    {% endif %}
+{% endfor %}

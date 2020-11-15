@@ -1,10 +1,10 @@
-<!--
-    Folder files list/grid
--->
-{% if exchange.cookies.file-grid == "true" %}
-    {% assign grid = true %}
-{% else %}
+{% comment %}
+Folder files list/grid
+{% endcomment %}
+{% if exchange.cookies.file-grid == "false" %}
     {% assign grid = false %}
+{% else %} {% comment %}Files are grid by default{% endcomment %}
+    {% assign grid = true %}
 {% endif %}
 
 <div 
@@ -18,31 +18,22 @@
         <p class="d-inline-block mb-0">/{{ file.name }}</p>
         <!-- grid toggler -->
         <button id="toggle-view" class="btn btn-light ml-auto">
-            {% if grid %}
-                <i class="fas fa-border-all fa-sq"></i>
-            {% else %}
+            {% if grid %} {% comment %} Show button for alt {% endcomment %}
                 <i class="fas fa-th-list fa-sq"></i>
+            {% else %}
+                <i class="fas fa-border-all fa-sq"></i>
             {% endif %}
         </button>
     </div>
     
+    <!-- files -->
     {% assign files = file.files | sort_natural: "name" %}
-    {% if grid %} {% comment %} Show button for alt {% endcomment %}
-        {% assign template = "files/file-list.liquid" %}
-    {% else %}
+    
+    {% if grid %}
         {% assign template = "files/file-grid.liquid" %}
+    {% else %}
+        {% assign template = "files/file-list.liquid" %}
     {% endif %}
 
-    <!-- directories -->
-    {% for file in files %}
-        {% if file.dir %}
-            {% include {{ template }} %}
-        {% endif %}
-    {% endfor %}
-    <!-- files -->
-    {% for file in files %}
-        {% if file.dir == false %}
-            {% include {{ template }} %}
-        {% endif %}
-    {% endfor %}
+    {% include {{ template }} %}
 </div>

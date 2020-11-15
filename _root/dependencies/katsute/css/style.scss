@@ -1,4 +1,4 @@
-@import "file";
+@import "global", "file";
 
 @font-face{
     font-family: 'Lexend Deca';
@@ -9,11 +9,6 @@
     font-family: 'Fira Code';
     src: url("/dependencies/google/webfonts/FiraCode.ttf")
 }
-
-$color-light    : #F3F2F1;
-$color-dark     : #202020;
-$color-darker   : #151515;
-$color-darkest  : #101010;
 
 // global
 
@@ -26,57 +21,10 @@ code, pre{
     font-family: 'Fira Code', 'Courier New', Courier, monospace;
 }
 
-// navs
-
-$transition: all .15s ease-in-out;
-$sidebar-width: 250px;
-
 .bg-light{
     background-color: $color-light;
 }
 
 .bg-dark{
     background-color: $color-dark !important;
-}
-
-nav{
-    $size: 48px;
-
-    min-height: $size;
-
-    button.navbar-toggler{
-        transition: $transition;
-        width : $size;
-        height: $size;
-
-        &:hover{
-            cursor: pointer;
-            background-color: $color-darker;
-        }
-    }
-
-    p.navbar-brand{
-        width: $sidebar-width - $size;
-    }
-
-    div form div.input-group{
-        input{
-            background-clip: unset;
-            width: 300px !important;
-        }
-    }
-}
-
-#nav-sidebar{
-    flex-basis  : $sidebar-width;
-    flex-grow   : 0;
-    flex-shrink : 0;
-
-    transition  : all .3s ease-in-out;
-    display     : block;
-    margin-left : -$sidebar-width;
-    
-    &.active{
-        margin-left: 0px;
-    }
 }

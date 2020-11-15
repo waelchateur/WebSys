@@ -1,6 +1,11 @@
-<!--
-    Sidebar
--->
-<div id="nav-sidebar" class="bg-dark text-white active">
+{% comment %}
+Sidebar
+{% endcomment %}
+{% if exchange.cookies.sidebar-show == "false" %}
+    {% assign show = false %}
+{% else %} {% comment %}Sidebar shown by default{% endcomment %}
+    {% assign show = true %}
+{% endif %}
+<div id="nav-sidebar" class="bg-dark text-white{% if show %} show{% endif %}">
 
 </div>

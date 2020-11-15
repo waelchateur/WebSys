@@ -31,6 +31,9 @@ public class WebSysRenderer extends Renderer {
             uri.put("ascii", URI.toASCIIString());
             map.put("uri", uri);
 
+            map.put("get", exchange.getGetMap());
+            map.put("post", exchange.getPostMap());
+
             render.getFrontMatter().put("exchange", map);
         }
 

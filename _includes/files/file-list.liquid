@@ -1,30 +1,28 @@
-<!-- 
-    File list (for folders)
--->
-{% if file.dir %}
-    {% assign type = "dir" %}
-{% else %}
-    {% assign type = "file" %}
-{% endif %}
+{% comment %}
+File list (for folders)
+{% endcomment %}
+{% assign template = "files/file-list-single.liquid" %}
 
-<div class="row border-bottom file mx-2 py-2 position-relative w-100"
-    title="{{ file.name }}">
-    <div class="d-flex align-items-center col">
-        <!-- icon -->
-        {% if file.dir %}
-            <i class="fas fa-folder fa-lg fa-fw"></i>
-        {% else %}
-            <i class="fas fa-file fa-lg fa-fw"></i>
-        {% endif %}
-        <!-- name -->
-        <a 
-            class="text-decoration-none text-body text-truncate 
-                h6 stretched-link card-text file-link
-                ml-3 w-100" 
-            href="{{ file.name | url_encode | escape }}"
-            file-target="{{ file.path }}" file-type="{{ type }}"
-            >
-            {{ file.name }}
-        </a>
-    </div>
-</div>
+<table id="file-list" class="table table-sm">
+    <thead>
+        <th scope="col" class="fa-fw"></th>
+        <th scope="col">Name</th>
+        <th scope="col" width="200">Date modified</th>
+        <th scope="col" width="100">Size</th>
+        <th scope="col" width="150">Attr</th>
+    </thead>
+    <tbody>
+        <!-- directories -->
+        {% for file in files %}
+            {% if file.dir %}
+                {% include {{ template }} %}
+            {% endif %}
+        {% endfor %}
+        <!-- files -->
+        {% for file in files %}
+            {% if file.dir == false %}
+                {% include {{ template }} %}
+            {% endif %}
+        {% endfor %}
+    </tbody>
+</table>

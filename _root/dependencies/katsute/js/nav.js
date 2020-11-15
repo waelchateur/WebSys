@@ -1,8 +1,11 @@
 $(document).ready(function () {
-    $('#sidebar-toggler').on('click', function () {
-        if($('#nav-sidebar').hasClass('active'))
-            $('#nav-sidebar').removeClass('active');
-        else
-            $('#nav-sidebar').addClass('active');
-    });
+    $('#sidebar-toggler').click(toggleSidebar);
 });
+
+function toggleSidebar(e){
+    if($('#nav-sidebar').hasClass('show'))
+        $('#nav-sidebar').removeClass('show');
+    else
+        $('#nav-sidebar').addClass('show');
+    setCookie("sidebar-show", $('#nav-sidebar').hasClass('show') ? "true" : "false", 0);
+}

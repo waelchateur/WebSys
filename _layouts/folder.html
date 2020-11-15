@@ -15,22 +15,26 @@
         </button>
         <div class="collapse navbar-collapse" id="nav-dropdown">
             <div class="px-1 py-2">
-                <form class="form-inline mr-auto">
+                <!-- search form -->
+                <form class="mr-auto" enctype="multipart/form-data" method="post">
                     <div class="input-group input-group-sm">
-                        <input class="form-control rounded-0" type="text" placeholder="Search">
+                        <!-- search field + button -->
+                        <input id="file-search" class="form-control rounded-0" disabled type="text" placeholder="Search" name="search" value="{{ exchange.post.search.value }}">
                         <div class="input-group-append">
-                            <button class="btn btn-primary rounded-0"><i class="fas fa-search"></i></button>
+                            <button class="btn btn-primary rounded-0"><i class="fas fa-search fa-fw"></i></button>
                         </div>
                     </div>
+                    <!-- adv search filters -->
+                    {% include files/search_filter.liquid %}
                 </form>
             </div>
         </div>
     </nav>
 
     <div class="d-flex flex-fill overflow-auto">
-    <!-- sidebar -->
+        <!-- sidebar -->
         {% include files/sidebar.liquid %}
-    <!-- files -->
+        <!-- files -->
         {% include files/files.liquid %}
     </div>
     <!-- dropdown -->

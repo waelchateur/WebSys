@@ -1,0 +1,57 @@
+{% comment %}
+File row (for folders)
+{% endcomment %}
+{% if file.dir %}
+    {% assign type = "dir" %}
+{% else %}
+    {% assign type = "file" %}
+{% endif %}
+
+<tr class="file mx-2 py-2">
+    <!-- icon -->
+    <td scope="row">
+        {% if file.dir %}
+            <i class="fas fa-folder fa-lg fa-fw"></i>
+        {% else %}
+            <i class="fas fa-file fa-lg fa-fw"></i>
+        {% endif %}
+    </td>
+    <!-- name -->
+    <td>
+        <a 
+            class="text-decoration-none text-body text-truncate 
+                h6 stretched-link card-text file-link" 
+            href="{{ file.name | url_encode }}"
+            file-target="{{ file.path }}" file-type="{{ type }}"
+            title="{{ file.name | escape }}"
+            >
+            {{ file.name }}
+        </a>
+    </td>
+    <!-- modified -->
+    <td>
+        {{ file.lastModified | divided_by: 1000 | date: "%m/%d/%y %l:%M %p" }}
+    </td>
+    <!-- size -->
+    <td>
+        {% if file.dir == false and file.length > 0 %}
+            {{ file.size }}
+        {% else %}
+            -
+        {% endif %}
+    </td>
+    <!-- attr -->
+    <td>
+        {% if file.canWrite == false %}
+            <span class="fa-stack fa-fw fa-sm">
+                <i class="fas fa-pencil-alt fa-stack-1x"></i>
+                <i class="text-danger fas fa-ban fa-stack-2x"></i>
+            </span>
+        {% endif %}
+        {% if file.hidden %}
+            <span class="fa-stack fa-fw fa-sm">
+                <i class="fas fa-eye-slash fa-stack-1x"></i>
+            </span>
+        {% endif %}
+    </td>
+</tr>

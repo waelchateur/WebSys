@@ -3,12 +3,8 @@ package com.katsute.websys.filevars;
 import com.kttdevelopment.webdir.api.FileRender;
 import com.kttdevelopment.webdir.api.Renderer;
 
-import javax.imageio.ImageIO;
-import javax.swing.*;
-import javax.swing.filechooser.FileSystemView;
-import java.awt.*;
-import java.awt.image.BufferedImage;
 import java.io.*;
+import java.text.DecimalFormat;
 import java.util.*;
 import java.util.List;
 
@@ -45,12 +41,22 @@ public class FileRenderer extends Renderer {
         map.put("canRead", file.canRead());
         map.put("canExecute", file.canExecute());
         map.put("lastModified", file.lastModified());
-        map.put("size", file.length());
+        map.put("length", file.length());
+        map.put("size", getUnitBytes(file.length()));
+
         try{
             map.put("parent", file.getParentFile().getName());
         }catch(final NullPointerException ignored){ }
 
         return map;
+    }
+
+    private final String[] units = {"B", "KB", "MB", "GB", "TB"};
+
+    private String getUnitBytes(final long bytes){
+        if(bytes <= 0) return "0";
+        int digitGroups = (int) (Math.log10(bytes)/Math.log10(1024));
+        return new DecimalFormat("#,##0.#").format(bytes / Math.pow(1024, digitGroups)) + ' ' + units[digitGroups];
     }
 
 }
