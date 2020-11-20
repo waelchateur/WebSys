@@ -40,10 +40,19 @@ server: true
 # Default: 80
 port: 80
 
+# The context to view raw files at.
+# Ex: setting this to 'raw' would put files from C://* at http://localhost/raw/C:/*
+# Default: raw
+raw: raw
+
 # The context to view files at.
 # Ex: setting this to 'files' would put files from C://* at http://localhost/files/C:/*
 # Default: files
 context: files
+
+# The file to use as the 404 page.
+# Default: 404.html
+404: 404.html
 
 # The file to load permissions from (server only).
 # Default: permissions.yml

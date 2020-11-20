@@ -22,7 +22,7 @@ public final class LayoutRenderer extends Renderer {
     public final byte[] render(final FileRender render){
         final Object obj = render.getFrontMatter().get("layouts");
         @SuppressWarnings("unchecked")
-        final List<String> layouts = obj instanceof List ? (List<String>) obj : List.of(obj.toString());
+        final List<String> layouts = new ArrayList<>(obj instanceof List ? (List<String>) obj : List.of(obj.toString()));
 
         String content = Objects.requireNonNullElse(render.getContentAsString(), "");
         Collections.reverse(layouts);
@@ -33,7 +33,7 @@ public final class LayoutRenderer extends Renderer {
 
     private String applyLayout(final String layout, final String content){
         final String fileName = layout.toLowerCase().endsWith(".html") ? layout.substring(0, layout.length()-len) : layout;
-        final String target    = fileName.isBlank() || fileName.equalsIgnoreCase(".html") ? layout : fileName + ".html";
+        final String target   = fileName.isBlank() || fileName.equalsIgnoreCase(".html") ? layout : fileName + ".html";
         try{
             return Files.readString(new File(layouts, target).toPath()).replaceAll(regex, content);
         }catch(final IOException e){
