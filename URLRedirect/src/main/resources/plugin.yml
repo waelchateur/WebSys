@@ -1,6 +1,0 @@
-main: com.katsute.websys.url.Main
-name: URLRedirect
-version: 1.0.0
-api-version: 1.0.0
-authors:
-  - Katsute

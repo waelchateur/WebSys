@@ -12,6 +12,6 @@
 /_site
 
 # Maven
-/.idea/
+.idea
 *.iml
 target

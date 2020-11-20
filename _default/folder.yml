@@ -5,8 +5,8 @@ default:
       file: false  # folder
     - 'C:/*'
 exchange_renderers:
-  - WebSysVars
-  - fileVars
+  - websys
+  - file
   - layout
   - liquid
 layouts:

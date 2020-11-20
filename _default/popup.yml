@@ -3,7 +3,7 @@ default:
   scope:
     - '/popup'
 exchange_renderers:
-  - WebSysVars
-  - fileVars
+  - websys
+  - file
   - layout
   - liquid
